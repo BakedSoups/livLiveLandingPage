@@ -181,7 +181,7 @@ export function MobileFeatureCarousel() {
   }, []);
 
   return (
-    <div className="mt-8 w-screen max-w-[100vw] overflow-hidden lg:hidden">
+    <div className="absolute inset-x-0 bottom-8 z-20 w-full overflow-hidden lg:hidden">
       <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {floatingTiles.map((tile, index) => {
         const isActiveGif = tile.animated && activeAnimatedIndex === index;

@@ -3,56 +3,30 @@
 import { useEffect, useMemo, useState } from "react";
 
 const prompts = [
-  "I want a Porsche racing founder event",
-  "Host a rooftop AI mixer for 200 builders",
-  "Plan a VC dinner after demo day",
-  "Throw a fintech founder poker night",
-  "Find a warehouse for an underground launch",
-  "Book DJs for a late-night product party",
-  "Create a Formula 1 watch party for founders",
-  "Set up a climate tech salon by the beach",
-  "Build a wellness morning for startup teams",
-  "Organize a private chef dinner for investors",
-  "Launch a fashion pop-up with creators",
-  "Host a robotics showcase in a garage",
-  "Plan a women in tech brunch this Sunday",
-  "Throw a crypto art gallery night",
-  "Find sponsors for a hackathon afterparty",
-  "Book a speakeasy for 80 operators",
-  "Create a tequila tasting for SaaS founders",
-  "Host a live podcast with angel investors",
-  "Plan a college founder pitch night",
-  "Throw a gaming tournament for creators",
-  "Book security for a 500-person launch",
-  "Set up a founder run club breakfast",
-  "Host a product hunt launch party",
-  "Create a biotech investor roundtable",
-  "Plan a Miami boat party for founders",
-  "Find a jazz bar for a networking night",
-  "Throw a creator economy dinner",
-  "Host a design critique night downtown",
-  "Plan a sports car rally for operators",
-  "Book photographers for a brand activation",
-  "Create a coffee crawl for early-stage founders",
-  "Host a pitch practice night with mentors",
-  "Throw a warehouse rave for developers",
-  "Plan a luxury wellness retreat for CEOs",
-  "Find vendors for a hardware demo fair",
-  "Host a film screening for media founders",
-  "Create a supper club for fintech teams",
-  "Plan a charity race event with sponsors",
-  "Book a rooftop for an AI agent meetup",
-  "Throw a launch party with Red Bull vibes",
-  "Host a sneaker pop-up for local creators",
-  "Create a private networking night in SoHo",
-  "Plan a motorsport fundraiser for founders",
-  "Book a gallery for a startup art night",
-  "Host a cybersecurity war room meetup",
-  "Throw a founder karaoke afterparty",
-  "Plan a champagne brunch for investors",
-  "Create a demo night with live music",
-  "Host a basketball tournament for builders",
-  "Find permits for a street market launch",
+  "Rooftop AI mixer",
+  "Founder poker night",
+  "Demo day dinner",
+  "F1 watch party",
+  "Warehouse launch",
+  "Hackathon afterparty",
+  "Creator pop-up",
+  "Robotics showcase",
+  "Investor brunch",
+  "Live podcast night",
+  "Gaming tournament",
+  "Product hunt party",
+  "Jazz bar meetup",
+  "Sports car rally",
+  "Coffee crawl",
+  "Pitch practice night",
+  "Warehouse rave",
+  "Hardware demo fair",
+  "Supper club",
+  "AI agent meetup",
+  "Founder karaoke",
+  "Demo night live",
+  "Builder basketball",
+  "Street market launch",
 ];
 
 const TYPE_MS = 34;
@@ -115,12 +89,12 @@ export default function HeroPromptCycler() {
   return (
     <p
       aria-label={`Example event prompt: ${typed}`}
-      className="typed-prompt mx-auto mt-5 flex min-h-10 select-none items-center justify-center font-mono text-xs text-white/78 sm:text-base"
+      className="typed-prompt mx-auto mt-7 flex min-h-14 w-full max-w-4xl select-none items-center justify-center px-3 font-mono text-lg text-white/90 sm:text-2xl lg:text-3xl"
     >
       <span className="typed-prompt-shell" data-submitting={phase === "submitting"}>
-        <span className="mr-2 text-white/42">&gt;</span>
+        <span className="mr-3 text-[#4ade80]">&gt;</span>
         <span className="typed-prompt-text">{typed}</span>
-        <span className="quote-caret ml-1 inline-block h-[1.1em] w-px translate-y-0.5 bg-current" />
+        <span className="quote-caret ml-1 inline-block h-[1.1em] w-0.5 translate-y-0.5 bg-[#4ade80]" />
         <span className="typed-prompt-key" data-visible={phase === "holding" || phase === "submitting"}>
           ENTER
         </span>

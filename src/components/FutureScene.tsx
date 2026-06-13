@@ -27,7 +27,7 @@ export default function FutureScene() {
     const group = new THREE.Group();
     scene.add(group);
 
-    const particleCount = 620;
+    const particleCount = 1250;
     const positions = new Float32Array(particleCount * 3);
     const basePositions = new Float32Array(particleCount * 3);
     const phases = new Float32Array(particleCount);
@@ -55,9 +55,9 @@ export default function FutureScene() {
       geometry,
       new THREE.PointsMaterial({
         color: 0xffffff,
-        size: 0.018,
+        size: 0.023,
         transparent: true,
-        opacity: 0.42,
+        opacity: 0.6,
         depthWrite: false,
       }),
     );
@@ -75,25 +75,25 @@ export default function FutureScene() {
     }
 
     function animate() {
-      frame += 0.0008;
+      frame += 0.0017;
       const position = geometry.attributes.position as THREE.BufferAttribute;
       const array = position.array as Float32Array;
       for (let i = 0; i < particleCount; i++) {
         const offset = i * 3;
-        const phase = phases[i] + frame * speeds[i] * 2.4;
-        const breathe = 1 + Math.sin(phase) * 0.008;
+        const phase = phases[i] + frame * speeds[i] * 3.4;
+        const breathe = 1 + Math.sin(phase) * 0.018;
         array[offset] = basePositions[offset] * breathe;
         array[offset + 1] =
-          basePositions[offset + 1] + Math.sin(phase * 1.17) * 0.035;
+          basePositions[offset + 1] + Math.sin(phase * 1.17) * 0.09;
         array[offset + 2] =
-          basePositions[offset + 2] + Math.cos(phase * 0.9) * 0.045;
+          basePositions[offset + 2] + Math.cos(phase * 0.9) * 0.1;
       }
       position.needsUpdate = true;
 
-      group.rotation.y = frame * 0.1;
-      group.rotation.x = Math.sin(frame * 0.32) * 0.012;
-      group.scale.setScalar(1 + Math.sin(frame * 1.1) * 0.004);
-      particles.rotation.z = Math.sin(frame * 0.25) * 0.008;
+      group.rotation.y = frame * 0.22;
+      group.rotation.x = Math.sin(frame * 0.38) * 0.018;
+      group.scale.setScalar(1 + Math.sin(frame * 1.2) * 0.007);
+      particles.rotation.z = Math.sin(frame * 0.32) * 0.012;
       renderer.render(scene, camera);
       animationId = requestAnimationFrame(animate);
     }

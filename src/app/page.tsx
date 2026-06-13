@@ -34,17 +34,17 @@ export default function Home() {
     <main className="min-h-screen overflow-hidden bg-paper text-ink">
       <section
         id="top"
-        className="relative isolate min-h-screen overflow-hidden bg-[#050507] px-5 py-6 text-paper sm:px-8 lg:px-12"
+        className="relative isolate min-h-[920px] overflow-hidden bg-[#050507] px-5 py-6 text-paper sm:min-h-screen sm:px-8 lg:px-12"
       >
         <div className="absolute inset-0 -z-30 bg-black" />
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:34px_34px]" />
-        <div className="absolute inset-0 -z-10 opacity-75">
+        <div className="absolute inset-0 -z-10 opacity-100">
           <FutureScene />
         </div>
 
         <FloatingFeatureCards />
 
-        <nav className="relative z-20 mx-auto flex max-w-7xl items-center justify-center">
+        <nav className="absolute inset-x-0 top-6 z-30 flex items-center justify-center text-center">
           <a href="#top" className="flex items-center gap-3">
             <span className="font-mono text-2xl font-black italic tracking-tight text-white">
               LIVLIVE
@@ -52,24 +52,21 @@ export default function Home() {
           </a>
         </nav>
 
-        <div className="mx-auto flex min-h-[calc(100svh-72px)] w-full max-w-7xl items-center justify-center pb-12 pt-10 text-center">
-          <div className="relative z-10 mx-auto flex w-full flex-col items-center">
-            <h1 className="mx-auto w-full max-w-6xl text-center font-mono text-[clamp(1.75rem,7.4vw,8rem)] font-black uppercase leading-[0.96] tracking-[0.02em] text-white">
+        <div className="mx-auto flex min-h-[620px] w-full max-w-7xl items-center justify-center pb-12 pt-24 text-center sm:min-h-screen">
+          <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center">
+            <h1 className="mx-auto w-full text-center font-mono text-[clamp(1.45rem,4.85vw,5.4rem)] font-black uppercase leading-[0.96] tracking-[0.02em] text-white">
               <span className="block whitespace-nowrap text-center">Host offline events</span>
               <br />
               <span className="block whitespace-nowrap text-center text-white">in 10 minutes.</span>
             </h1>
-            <p className="mx-auto mt-7 max-w-2xl font-mono text-base leading-7 text-white/48">
-              The operating system for startup events.
-            </p>
             <HeroPromptCycler />
 
             <div className="mx-auto mt-8 max-w-xl">
               <SignupForm compact />
             </div>
-            <MobileFeatureCarousel />
           </div>
         </div>
+        <MobileFeatureCarousel />
         <a
           href="#scout"
           className="absolute bottom-8 left-1/2 z-20 hidden -translate-x-1/2 text-center font-mono text-xs text-white/35 sm:block"

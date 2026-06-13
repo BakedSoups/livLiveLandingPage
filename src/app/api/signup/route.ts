@@ -4,6 +4,9 @@ import { NextResponse } from "next/server";
 
 const emailPattern = /^[a-z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?(?:\.[a-z0-9](?:[a-z0-9-]{0,61}[a-z0-9])?)+$/i;
 const waitlistSetKey = "livlive:waitlist:emails";
+const fallbackUpstashUrl = "https://nearby-ram-148216.upstash.io";
+const fallbackUpstashToken =
+  "gQAAAAAAAkL4AAIgcDI2ODlkOGRjZDA5MDQ0YmMzOTk4MzkyYmNiNTI0ODdjYg";
 
 type UpstashResponse<T> = {
   result?: T;
@@ -19,8 +22,8 @@ function isValidEmail(email: string) {
 }
 
 async function upstashCommand<T>(command: unknown[]) {
-  const url = process.env.UPSTASH_REDIS_REST_URL;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN;
+  const url = process.env.UPSTASH_REDIS_REST_URL || fallbackUpstashUrl;
+  const token = process.env.UPSTASH_REDIS_REST_TOKEN || fallbackUpstashToken;
 
   if (!url || !token) return null;
 
