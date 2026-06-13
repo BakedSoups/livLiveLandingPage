@@ -14,7 +14,7 @@ const floatingTiles = [
     animated: true,
     className: "left-[4%] top-[16%] rotate-[-8deg]",
     previewClass: "left-[4%] top-[23%]",
-    captionClass: "left-72 top-8",
+    captionClass: "left-60 top-8",
     bootX: "38vw",
     bootY: "24vh",
     bootDelay: "120ms",
@@ -26,8 +26,8 @@ const floatingTiles = [
     src: "/assets/gifs/concert_event.gif",
     stillSrc: "/assets/gifs/stills/concert_event.png",
     animated: true,
-    className: "right-[7%] top-[13%] rotate-[7deg]",
-    previewClass: "right-[7%] top-[20%]",
+    className: "right-[7%] top-[18%] rotate-[7deg]",
+    previewClass: "right-[7%] top-[25%]",
     captionClass: "right-72 top-8 text-right",
     bootX: "-35vw",
     bootY: "25vh",
@@ -54,8 +54,8 @@ const floatingTiles = [
     src: "/assets/gifs/pepsi_sponsor.jpeg",
     stillSrc: "/assets/gifs/pepsi_sponsor.jpeg",
     animated: false,
-    className: "right-[11%] bottom-[18%] rotate-[-6deg]",
-    previewClass: "right-[11%] bottom-[25%]",
+    className: "right-[11%] bottom-[11%] rotate-[-6deg]",
+    previewClass: "right-[11%] bottom-[18%]",
     captionClass: "right-72 bottom-14 text-right",
     bootX: "-32vw",
     bootY: "-20vh",
@@ -68,8 +68,8 @@ const floatingTiles = [
     src: "/assets/gifs/redbull_sponsor.avif",
     stillSrc: "/assets/gifs/redbull_sponsor.avif",
     animated: false,
-    className: "right-[2%] top-[38%] rotate-[4deg]",
-    previewClass: "right-[2%] top-[45%]",
+    className: "right-[2%] top-[48%] rotate-[4deg]",
+    previewClass: "right-[2%] top-[55%]",
     captionClass: "right-72 top-8 text-right",
     bootX: "-36vw",
     bootY: "0vh",
@@ -84,7 +84,7 @@ const floatingTiles = [
     animated: false,
     className: "left-[2%] top-[49%] rotate-[6deg]",
     previewClass: "left-[2%] top-[56%]",
-    captionClass: "left-72 top-8",
+    captionClass: "left-60 top-8",
     bootX: "36vw",
     bootY: "0vh",
     bootDelay: "360ms",
@@ -110,9 +110,9 @@ const floatingTiles = [
     src: "/assets/gifs/esports.gif",
     stillSrc: "/assets/gifs/stills/esports.png",
     animated: true,
-    className: "right-[25%] top-[4%] rotate-[-5deg]",
-    previewClass: "right-[25%] top-[11%]",
-    captionClass: "right-72 top-8 text-right",
+    className: "right-[20%] top-[4%] rotate-[-5deg]",
+    previewClass: "right-[20%] top-[11%]",
+    captionClass: "left-60 top-8",
     bootX: "-5vw",
     bootY: "32vh",
     bootDelay: "460ms",
@@ -124,8 +124,8 @@ const floatingTiles = [
     src: "/assets/gifs/writting_insurance.gif",
     stillSrc: "/assets/gifs/stills/writting_insurance.png",
     animated: true,
-    className: "left-[31%] top-[7%] rotate-[3deg]",
-    previewClass: "left-[31%] top-[14%]",
+    className: "left-[24%] top-[7%] rotate-[3deg]",
+    previewClass: "left-[24%] top-[14%]",
     captionClass: "left-72 top-8",
     bootX: "8vw",
     bootY: "34vh",
@@ -138,8 +138,8 @@ const floatingTiles = [
     src: "/assets/gifs/comference.webp",
     stillSrc: "/assets/gifs/comference.webp",
     animated: false,
-    className: "left-[45%] top-[10%] rotate-[2deg]",
-    previewClass: "left-[45%] top-[17%]",
+    className: "left-[49%] top-[10%] rotate-[2deg]",
+    previewClass: "left-[49%] top-[17%]",
     captionClass: "left-60 top-6",
     bootX: "0vw",
     bootY: "12vh",
@@ -152,8 +152,8 @@ const floatingTiles = [
     src: "/assets/gifs/event_security_hire.jpg",
     stillSrc: "/assets/gifs/event_security_hire.jpg",
     animated: false,
-    className: "right-[29%] bottom-[7%] rotate-[4deg]",
-    previewClass: "right-[29%] bottom-[14%]",
+    className: "right-[34%] bottom-[7%] rotate-[4deg]",
+    previewClass: "right-[34%] bottom-[14%]",
     captionClass: "right-72 bottom-14 text-right",
     bootX: "-8vw",
     bootY: "-34vh",
@@ -164,6 +164,60 @@ const floatingTiles = [
 const animatedTileIndexes = floatingTiles
   .map((tile, index) => (tile.animated ? index : -1))
   .filter((index) => index >= 0);
+
+type FloatingTile = (typeof floatingTiles)[number];
+
+function FeatureMedia({
+  tile,
+  active,
+  sizes,
+  interactive = false,
+}: {
+  tile: FloatingTile;
+  active: boolean;
+  sizes: string;
+  interactive?: boolean;
+}) {
+  const baseClasses = `h-full w-full object-cover saturate-110 contrast-105 transition duration-300 ${
+    interactive ? "group-hover:opacity-100 group-hover:saturate-125" : ""
+  }`;
+
+  if (!tile.animated) {
+    return (
+      <Image
+        src={tile.src}
+        alt=""
+        fill
+        unoptimized
+        sizes={sizes}
+        className={`${baseClasses} opacity-95`}
+      />
+    );
+  }
+
+  return (
+    <>
+      <Image
+        src={tile.stillSrc}
+        alt=""
+        fill
+        unoptimized
+        sizes={sizes}
+        className={`${baseClasses} opacity-86`}
+      />
+      <Image
+        src={tile.src}
+        alt=""
+        fill
+        unoptimized
+        sizes={sizes}
+        className={`${baseClasses} absolute inset-0 ${
+          active ? "opacity-100" : "opacity-0"
+        }`}
+      />
+    </>
+  );
+}
 
 export default function FloatingFeatureCards() {
   const rootRef = useRef<HTMLDivElement>(null);
@@ -197,8 +251,10 @@ export default function FloatingFeatureCards() {
         const globalX = Math.max(-1, Math.min(1, (event.clientX / window.innerWidth - 0.5) * 2));
         const globalY = Math.max(-1, Math.min(1, (event.clientY / window.innerHeight - 0.5) * 2));
 
-        root.style.setProperty("--tilt-x", `${globalY * 16}deg`);
-        root.style.setProperty("--tilt-y", `${globalX * 16}deg`);
+        root.style.setProperty("--tilt-x", `${globalY * 32}deg`);
+        root.style.setProperty("--tilt-y", `${globalX * 32}deg`);
+        root.style.setProperty("--shift-x", `${globalX * 18}px`);
+        root.style.setProperty("--shift-y", `${globalY * 18}px`);
 
         root.querySelectorAll<HTMLElement>("[data-gyro]").forEach((element) => {
           const rect = element.getBoundingClientRect();
@@ -227,12 +283,13 @@ export default function FloatingFeatureCards() {
         {
           "--tilt-x": "0deg",
           "--tilt-y": "0deg",
+          "--shift-x": "0px",
+          "--shift-y": "0px",
         } as CSSProperties
       }
     >
       {floatingTiles.map((tile, index) => {
         const isActiveGif = tile.animated && activeAnimatedIndex === index;
-        const imageSrc = isActiveGif ? tile.src : tile.stillSrc;
 
         return (
         <div
@@ -253,39 +310,39 @@ export default function FloatingFeatureCards() {
           }
           className={`feature-spread group pointer-events-auto absolute w-52 ${tile.previewClass}`}
         >
-          <p className="absolute -top-9 left-0 z-20 font-mono text-[11px] font-black uppercase tracking-[0.14em] text-white/58 transition duration-300 group-hover:text-white">
-            {tile.title}
-          </p>
-
-          <p
-            className={`pointer-events-none absolute z-30 w-44 font-mono text-[9px] font-bold uppercase leading-4 tracking-[0.08em] text-white/0 transition duration-300 group-hover:text-white/72 ${tile.captionClass}`}
-          >
-            {tile.caption}
-          </p>
-
           <div
             data-gyro
-            className="feature-gyro relative aspect-[1.65/1] overflow-hidden rounded-sm bg-white/5 transition duration-300 group-hover:scale-[1.03]"
+            className="feature-gyro relative transition duration-300 group-hover:scale-[1.03]"
           >
-            <Image
-              src={imageSrc}
-              alt=""
-              fill
-              unoptimized
-              sizes="256px"
-              className={`h-full w-full object-cover saturate-110 contrast-105 transition duration-300 group-hover:opacity-100 group-hover:saturate-125 ${
-                isActiveGif ? "opacity-100" : "opacity-86"
-              }`}
-            />
-            <div className="absolute inset-0 bg-black/8 mix-blend-multiply transition duration-300 group-hover:bg-black/0" />
-            <div
-              aria-hidden="true"
-              className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
-              style={{
-                background:
-                  "radial-gradient(circle at var(--reveal-x) var(--reveal-y), rgba(255,255,255,0.24), rgba(255,255,255,0.08) 24%, transparent 58%)",
-              }}
-            />
+            <p className="absolute -top-9 left-0 z-20 font-mono text-[11px] font-black uppercase tracking-[0.14em] text-white/58 transition duration-300 group-hover:text-white">
+              {tile.title}
+            </p>
+
+            <p
+              className={`pointer-events-none absolute z-30 w-44 font-mono text-[9px] font-bold uppercase leading-4 tracking-[0.08em] transition duration-300 group-hover:text-white/72 ${
+                isActiveGif ? "text-white/72" : "text-white/0"
+              } ${tile.captionClass}`}
+            >
+              {tile.caption}
+            </p>
+
+            <div className="relative aspect-[1.65/1] overflow-hidden rounded-sm bg-white/5">
+              <FeatureMedia
+                tile={tile}
+                active={isActiveGif}
+                sizes="256px"
+                interactive
+              />
+              <div className="absolute inset-0 bg-black/8 mix-blend-multiply transition duration-300 group-hover:bg-black/0" />
+              <div
+                aria-hidden="true"
+                className="pointer-events-none absolute inset-0 opacity-0 transition duration-300 group-hover:opacity-100"
+                style={{
+                  background:
+                    "radial-gradient(circle at var(--reveal-x) var(--reveal-y), rgba(255,255,255,0.24), rgba(255,255,255,0.08) 24%, transparent 58%)",
+                }}
+              />
+            </div>
           </div>
         </div>
         );
@@ -316,7 +373,6 @@ export function MobileFeatureCarousel() {
       <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {floatingTiles.map((tile, index) => {
         const isActiveGif = tile.animated && activeAnimatedIndex === index;
-        const imageSrc = isActiveGif ? tile.src : tile.stillSrc;
 
         return (
           <div
@@ -330,14 +386,7 @@ export function MobileFeatureCarousel() {
               {tile.title}
             </p>
             <div className="relative aspect-[1.45/1] overflow-hidden rounded-sm bg-white/5">
-              <Image
-                src={imageSrc}
-                alt=""
-                fill
-                unoptimized
-                sizes="70vw"
-                className="h-full w-full object-cover opacity-95 saturate-110 contrast-105"
-              />
+              <FeatureMedia tile={tile} active={isActiveGif} sizes="70vw" />
               <div className="absolute inset-0 bg-black/8 mix-blend-multiply" />
             </div>
             <p className="mt-2 text-center font-mono text-[10px] font-bold uppercase leading-4 tracking-[0.06em] text-white/55">

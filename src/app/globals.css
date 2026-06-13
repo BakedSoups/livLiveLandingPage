@@ -258,6 +258,7 @@ body {
 .feature-gyro {
   transform:
     perspective(560px)
+    translate3d(var(--shift-x, 0px), var(--shift-y, 0px), 0)
     rotateX(var(--tilt-x, 0deg))
     rotateY(var(--tilt-y, 0deg));
   transform-origin: center;
