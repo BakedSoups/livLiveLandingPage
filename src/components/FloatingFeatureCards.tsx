@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import type { CSSProperties } from "react";
 import { useEffect, useState } from "react";
 
 const floatingTiles = [
@@ -14,6 +15,9 @@ const floatingTiles = [
     className: "left-[4%] top-[16%] rotate-[-8deg]",
     previewClass: "left-[4%] top-[23%]",
     captionClass: "left-72 top-8",
+    bootX: "38vw",
+    bootY: "24vh",
+    bootDelay: "120ms",
   },
   {
     num: "02",
@@ -25,6 +29,9 @@ const floatingTiles = [
     className: "right-[7%] top-[13%] rotate-[7deg]",
     previewClass: "right-[7%] top-[20%]",
     captionClass: "right-72 top-8 text-right",
+    bootX: "-35vw",
+    bootY: "25vh",
+    bootDelay: "180ms",
   },
   {
     num: "03",
@@ -36,6 +43,9 @@ const floatingTiles = [
     className: "left-[8%] bottom-[24%] rotate-[5deg]",
     previewClass: "left-[8%] bottom-[31%]",
     captionClass: "left-72 bottom-14",
+    bootX: "34vw",
+    bootY: "-18vh",
+    bootDelay: "260ms",
   },
   {
     num: "04",
@@ -47,6 +57,9 @@ const floatingTiles = [
     className: "right-[11%] bottom-[18%] rotate-[-6deg]",
     previewClass: "right-[11%] bottom-[25%]",
     captionClass: "right-72 bottom-14 text-right",
+    bootX: "-32vw",
+    bootY: "-20vh",
+    bootDelay: "320ms",
   },
   {
     num: "05",
@@ -58,6 +71,9 @@ const floatingTiles = [
     className: "left-[31%] top-[7%] rotate-[3deg]",
     previewClass: "left-[31%] top-[14%]",
     captionClass: "left-72 top-8",
+    bootX: "8vw",
+    bootY: "34vh",
+    bootDelay: "220ms",
   },
   {
     num: "06",
@@ -69,6 +85,9 @@ const floatingTiles = [
     className: "right-[29%] bottom-[7%] rotate-[4deg]",
     previewClass: "right-[29%] bottom-[14%]",
     captionClass: "right-72 bottom-14 text-right",
+    bootX: "-8vw",
+    bootY: "-34vh",
+    bootDelay: "380ms",
   },
 ];
 
@@ -105,7 +124,14 @@ export default function FloatingFeatureCards() {
           onMouseEnter={() => {
             if (tile.animated) setActiveAnimatedIndex(index);
           }}
-          className={`group pointer-events-auto absolute w-64 ${tile.previewClass}`}
+          style={
+            {
+              "--boot-x": tile.bootX,
+              "--boot-y": tile.bootY,
+              "--boot-delay": tile.bootDelay,
+            } as CSSProperties
+          }
+          className={`feature-spread group pointer-events-auto absolute w-64 ${tile.previewClass}`}
         >
           <p className="absolute -top-9 left-0 z-20 font-mono text-[11px] font-black uppercase tracking-[0.14em] text-white/58 transition duration-300 group-hover:text-white">
             {tile.title}
