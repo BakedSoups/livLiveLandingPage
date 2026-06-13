@@ -2,6 +2,7 @@ import FloatingFeatureCards, {
   MobileFeatureCarousel,
 } from "@/components/FloatingFeatureCards";
 import FutureScene from "@/components/FutureScene";
+import HeroPromptCycler from "@/components/HeroPromptCycler";
 import SignupForm from "@/components/SignupForm";
 
 const flow = [
@@ -61,17 +62,7 @@ export default function Home() {
             <p className="mx-auto mt-7 max-w-2xl font-mono text-base leading-7 text-white/48">
               The operating system for startup events.
             </p>
-            <p
-              aria-hidden="true"
-              className="quote-pulse mx-auto mt-5 flex min-h-8 origin-center select-none items-center justify-center font-mono text-sm text-white/78 sm:text-base"
-            >
-              <span className="mr-2 text-white/48">&gt;</span>
-              <span>
-                &ldquo;host a founder demo night
-                <span className="quote-caret mx-0.5 inline-block h-[1.1em] w-px translate-y-0.5 bg-current" />
-                &rdquo;
-              </span>
-            </p>
+            <HeroPromptCycler />
 
             <div className="mx-auto mt-8 max-w-xl">
               <SignupForm compact />

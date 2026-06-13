@@ -215,22 +215,6 @@ body {
   animation: spin-slow 22s linear infinite;
 }
 
-@keyframes quote-pulse {
-  0%,
-  100% {
-    opacity: 0.55;
-    transform: scale(0.96);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.04);
-  }
-}
-
-.quote-pulse {
-  animation: quote-pulse 2.4s ease-in-out infinite;
-}
-
 @keyframes caret-blink {
   0%,
   45% {
@@ -244,6 +228,51 @@ body {
 
 .quote-caret {
   animation: caret-blink 1.1s step-end infinite;
+}
+
+.typed-prompt {
+  overflow: hidden;
+  width: min(100%, 44rem);
+}
+
+.typed-prompt-shell {
+  align-items: center;
+  display: inline-flex;
+  max-width: 100%;
+  min-width: 0;
+  transition: transform 180ms ease;
+}
+
+.typed-prompt-shell[data-submitting="true"] {
+  transform: translateY(-3px);
+}
+
+.typed-prompt-text {
+  display: inline-block;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+}
+
+.typed-prompt-key {
+  border: 1px solid rgb(255 255 255 / 0.38);
+  border-radius: 4px;
+  color: rgb(255 255 255 / 0.72);
+  font-size: 0.68em;
+  line-height: 1;
+  margin-left: 0.7rem;
+  opacity: 0;
+  padding: 0.28rem 0.38rem;
+  transform: translateY(2px) scale(0.94);
+  transition:
+    opacity 160ms ease,
+    transform 160ms ease;
+}
+
+.typed-prompt-key[data-visible="true"] {
+  opacity: 1;
+  transform: translateY(0) scale(1);
 }
 
 @keyframes feature-spread {
