@@ -8,10 +8,10 @@
 
 @theme {
   /* ---- Universe palette (evolved from LivLive's existing flat-comic brand) */
-  --color-paper: #f7eecf; /* warm halftone cream */
-  --color-paper-2: #fbf6e2;
-  --color-ink: #0d0c14; /* near-black comic ink */
-  --color-punch: #ff5747; /* coral-red */
+  --color-paper: #f7efd9; /* warm app cream */
+  --color-paper-2: #fffaf0;
+  --color-ink: #111820; /* app ink */
+  --color-punch: #ffffff;
   --color-blue: #2b3bff; /* electric royal */
   --color-sun: #ffd02e; /* sunshine yellow */
   --color-green: #16c074; /* grass green */
@@ -62,17 +62,12 @@ body {
   color: var(--color-ink);
   font-family: var(--font-sans);
   overflow-x: clip;
-  cursor: none; /* replaced by custom spider-reticle on pointer devices */
-}
-@media (hover: none), (pointer: coarse) {
-  body {
-    cursor: auto;
-  }
+  cursor: auto;
 }
 
 ::selection {
-  background: var(--color-magenta);
-  color: var(--color-paper);
+  background: var(--color-paper);
+  color: #000;
 }
 
 /* Hide scrollbar but keep scroll */
@@ -102,6 +97,12 @@ body {
   }
   .comic-shadow-sm {
     box-shadow: 4px 4px 0 0 var(--color-ink);
+  }
+  .shadow-hard {
+    box-shadow: 6px 6px 0 0 var(--color-ink);
+  }
+  .shadow-hard-sm {
+    box-shadow: 3px 3px 0 0 var(--color-ink);
   }
 
   /* Ben-Day halftone dot field — colour follows currentColor */
@@ -161,6 +162,7 @@ body {
   .grain-mask {
     mask-image: radial-gradient(circle, #000 60%, transparent 100%);
   }
+
 }
 
 /* =============================================================== KEYFRAMES = */

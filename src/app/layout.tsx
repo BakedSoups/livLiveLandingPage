@@ -1,25 +1,20 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import SmoothScroll from "@/components/providers/SmoothScroll";
-import Grain from "@/components/layout/Grain";
-import Cursor from "@/components/layout/Cursor";
-import ScrollProgress from "@/components/layout/ScrollProgress";
-import Nav from "@/components/layout/Nav";
 
 export const metadata: Metadata = {
-  title: "LIVLIVE — host IRL events in 10 mins",
+  title: "LIVLIVE — host offline events in 10 minutes",
   description:
-    "LIVLIVE is the largest partnership network for hosts. Find venues, talent, vendors & sponsors and go from text to booking in minutes. #itoocanhost",
+    "LIVLIVE helps startup teams turn event ideas into real-world plans with AI-assisted venue, ops, and launch checks.",
   openGraph: {
-    title: "LIVLIVE — host IRL events in 10 mins",
+    title: "LIVLIVE — host offline events in 10 minutes",
     description:
-      "The largest partnership network for hosts. Venues, talent, vendors & sponsors — booked in minutes.",
+      "AI-assisted planning for startup events, venues, ops, and launch checks.",
     type: "website",
   },
 };
 
 export const viewport: Viewport = {
-  themeColor: "#f7eecf",
+  themeColor: "#000000",
 };
 
 export default function RootLayout({
@@ -28,11 +23,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="bg-paper font-sans text-ink antialiased">
-        <Grain />
-        <Cursor />
-        <ScrollProgress />
-        <Nav />
-        <SmoothScroll>{children}</SmoothScroll>
+        {children}
       </body>
     </html>
   );
