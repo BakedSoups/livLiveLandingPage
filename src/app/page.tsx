@@ -1,4 +1,6 @@
-import FloatingFeatureCards from "@/components/FloatingFeatureCards";
+import FloatingFeatureCards, {
+  MobileFeatureCarousel,
+} from "@/components/FloatingFeatureCards";
 import FutureScene from "@/components/FutureScene";
 import SignupForm from "@/components/SignupForm";
 
@@ -31,7 +33,7 @@ export default function Home() {
     <main className="min-h-screen overflow-hidden bg-paper text-ink">
       <section
         id="top"
-        className="relative isolate min-h-[1080px] overflow-hidden bg-[#050507] px-5 py-6 text-paper sm:min-h-screen sm:px-8 lg:px-12"
+        className="relative isolate min-h-screen overflow-hidden bg-[#050507] px-5 py-6 text-paper sm:px-8 lg:px-12"
       >
         <div className="absolute inset-0 -z-30 bg-black" />
         <div className="absolute inset-0 -z-20 bg-[linear-gradient(rgba(255,255,255,0.025)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.025)_1px,transparent_1px)] bg-[size:34px_34px]" />
@@ -63,6 +65,7 @@ export default function Home() {
             <div className="mx-auto mt-8 max-w-xl">
               <SignupForm compact />
             </div>
+            <MobileFeatureCarousel />
           </div>
         </div>
         <a

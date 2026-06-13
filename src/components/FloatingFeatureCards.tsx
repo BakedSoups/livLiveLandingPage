@@ -94,7 +94,6 @@ export default function FloatingFeatureCards() {
   }, []);
 
   return (
-    <>
     <div className="pointer-events-none absolute inset-0 z-10 hidden lg:block">
       {floatingTiles.map((tile, index) => {
         const isActiveGif = tile.animated && activeAnimatedIndex === index;
@@ -135,7 +134,29 @@ export default function FloatingFeatureCards() {
         );
       })}
     </div>
-    <div className="absolute bottom-10 left-1/2 z-20 grid w-[calc(100%-2.5rem)] max-w-sm -translate-x-1/2 grid-cols-2 gap-x-3 gap-y-8 lg:hidden">
+  );
+}
+
+export function MobileFeatureCarousel() {
+  const [activeAnimatedIndex, setActiveAnimatedIndex] = useState(
+    animatedTileIndexes[0],
+  );
+
+  useEffect(() => {
+    const interval = window.setInterval(() => {
+      setActiveAnimatedIndex((current) => {
+        const currentPosition = animatedTileIndexes.indexOf(current);
+        const nextPosition = (currentPosition + 1) % animatedTileIndexes.length;
+        return animatedTileIndexes[nextPosition];
+      });
+    }, 2200);
+
+    return () => window.clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="mt-8 w-screen max-w-[100vw] overflow-hidden lg:hidden">
+      <div className="flex snap-x snap-mandatory gap-4 overflow-x-auto px-5 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
       {floatingTiles.map((tile, index) => {
         const isActiveGif = tile.animated && activeAnimatedIndex === index;
         const imageSrc = isActiveGif ? tile.src : tile.stillSrc;
@@ -146,7 +167,7 @@ export default function FloatingFeatureCards() {
             onPointerDown={() => {
               if (tile.animated) setActiveAnimatedIndex(index);
             }}
-            className="min-w-0"
+            className="w-[78vw] max-w-[330px] shrink-0 snap-center text-center"
           >
             <p className="mb-2 text-center font-mono text-[10px] font-black uppercase tracking-[0.12em] text-white/75">
               {tile.title}
@@ -157,7 +178,7 @@ export default function FloatingFeatureCards() {
                 alt=""
                 fill
                 unoptimized
-                sizes="45vw"
+                sizes="78vw"
                 className="h-full w-full object-cover opacity-95 saturate-110 contrast-105"
               />
               <div className="absolute inset-0 bg-black/8 mix-blend-multiply" />
@@ -168,7 +189,7 @@ export default function FloatingFeatureCards() {
           </div>
         );
       })}
+      </div>
     </div>
-    </>
   );
 }
