@@ -231,8 +231,8 @@ body {
 }
 
 .typed-prompt {
-  overflow: hidden;
-  width: min(100%, 44rem);
+  overflow: visible;
+  width: min(100%, 68rem);
 }
 
 .typed-prompt-shell {
@@ -250,9 +250,22 @@ body {
 .typed-prompt-text {
   display: inline-block;
   min-width: 0;
-  overflow: hidden;
-  text-overflow: clip;
-  white-space: nowrap;
+  overflow: visible;
+  text-wrap: balance;
+  white-space: normal;
+}
+
+.feature-gyro {
+  transform:
+    perspective(560px)
+    rotateX(var(--tilt-x, 0deg))
+    rotateY(var(--tilt-y, 0deg));
+  transform-origin: center;
+  transform-style: preserve-3d;
+  will-change: transform;
+  transition:
+    transform 120ms ease-out,
+    scale 300ms ease;
 }
 
 .typed-prompt-key {

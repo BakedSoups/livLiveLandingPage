@@ -59,6 +59,9 @@ export default function Home() {
               <br />
               <span className="block whitespace-nowrap text-center text-white">in 10 minutes.</span>
             </h1>
+            <p className="mx-auto mt-6 max-w-4xl text-center font-mono text-sm uppercase leading-6 tracking-[0.08em] text-white/60 sm:text-base">
+              with AI that finds &amp; books everything you&apos;d need
+            </p>
             <HeroPromptCycler />
 
             <div className="mx-auto mt-8 max-w-xl">

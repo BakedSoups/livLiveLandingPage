@@ -3,30 +3,10 @@
 import { useEffect, useMemo, useState } from "react";
 
 const prompts = [
-  "Rooftop AI mixer",
-  "Founder poker night",
-  "Demo day dinner",
-  "F1 watch party",
-  "Warehouse launch",
-  "Hackathon afterparty",
-  "Creator pop-up",
-  "Robotics showcase",
-  "Investor brunch",
-  "Live podcast night",
-  "Gaming tournament",
-  "Product hunt party",
-  "Jazz bar meetup",
-  "Sports car rally",
-  "Coffee crawl",
-  "Pitch practice night",
-  "Warehouse rave",
-  "Hardware demo fair",
-  "Supper club",
-  "AI agent meetup",
-  "Founder karaoke",
-  "Demo night live",
-  "Builder basketball",
-  "Street market launch",
+  "Find me venues to host a hackathon in SF",
+  "Sponsors to bring on board for a Robotics Panel discussion",
+  "DJs who can play commercial music live for 500 people in SoMa",
+  "Order 100 vegan pizzas under $2,000",
 ];
 
 const TYPE_MS = 34;
@@ -37,7 +17,9 @@ const SUBMIT_MS = 520;
 type Phase = "typing" | "holding" | "submitting" | "deleting";
 
 export default function HeroPromptCycler() {
-  const [promptIndex, setPromptIndex] = useState(0);
+  const [promptIndex, setPromptIndex] = useState(() =>
+    Math.floor(Math.random() * prompts.length),
+  );
   const [typedLength, setTypedLength] = useState(0);
   const [phase, setPhase] = useState<Phase>("typing");
   const currentPrompt = prompts[promptIndex];
@@ -89,7 +71,7 @@ export default function HeroPromptCycler() {
   return (
     <p
       aria-label={`Example event prompt: ${typed}`}
-      className="typed-prompt mx-auto mt-7 flex min-h-14 w-full max-w-4xl select-none items-center justify-center px-3 font-mono text-lg text-white/90 sm:text-2xl lg:text-3xl"
+      className="typed-prompt mx-auto mt-6 flex min-h-14 w-full max-w-6xl select-none items-center justify-center px-3 font-mono text-sm text-white/90 sm:text-lg lg:text-xl"
     >
       <span className="typed-prompt-shell" data-submitting={phase === "submitting"}>
         <span className="mr-3 text-[#4ade80]">&gt;</span>
